@@ -1,0 +1,72 @@
+query GetAllPosts {
+  posts(where: { categoryName: "portfolio" }) {
+    nodes {
+      id
+      title
+      date
+      slug
+      tags {
+        edges {
+          node {
+            id
+            name
+          }
+        }
+      }
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+}
+
+query GetOnePost($id: ID!) {
+  post(id: $id) {
+    id
+    date
+    slug
+    title
+    content
+    uri
+    featuredImage {
+      node {
+        sourceUrl
+      }
+    }
+    tags {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query GetAllJourneys {
+  posts(where: { categoryNotIn: "dGVybToz" }) {
+    nodes {
+      id
+      title
+      date
+      slug
+      content
+      tags {
+        edges {
+          node {
+            id
+            name
+          }
+        }
+      }
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+}
