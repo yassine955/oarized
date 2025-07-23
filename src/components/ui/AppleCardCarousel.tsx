@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import { useGetAllPostsQuery } from "../../../generated/graphql";
@@ -10,7 +9,12 @@ export function AppleCardsCarouselDemo() {
     fetchPolicy: "no-cache",
   });
 
-  const cards = data?.posts?.nodes?.map((card, index) => (
+  const filter =
+    data?.posts?.nodes?.filter((post) => {
+      return post?.tags?.edges.some((edge) => edge?.node?.name === "shop");
+    }) ?? [];
+
+  const cards = filter?.map((card, index) => (
     <Card key={card.id} card={card} index={index} layout={true} />
   ));
 

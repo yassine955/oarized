@@ -4,8 +4,6 @@ import { Highlight } from "@/components/ui/hero-highlight";
 import { useRouter } from "next/router";
 import { useGetOnePostQuery } from "../../../generated/graphql";
 import { Loading } from "@/components/ui/LoadingComponent";
-import DOMPurify from "dompurify";
-import { JSDOM } from "jsdom";
 import { Fragment } from "react";
 import Moment from "moment";
 import { TracingBeam } from "@/components/ui/tracing-beam";
